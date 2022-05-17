@@ -1,4 +1,4 @@
-import { ArrowLeft, Camera } from "phosphor-react";
+import { ArrowLeft } from "phosphor-react";
 import { FormEvent, useState } from "react";
 import { FeedbackType, feedbackTypes } from "..";
 import { api } from '../../../lib/api'
@@ -7,13 +7,17 @@ import { Loading } from "../../Loading";
 import { ScreenshotButton } from "../ScreenshotButton";
 
 interface FeedbackContentStepProps {
-  feedbackType: FeedbackType;
-  onFeedbackRestartRequested: () => void;
-  onFeedbackSent: () => void;
+  feedbackType: FeedbackType
+  onFeedbackRestartRequested: () => void
+  onFeedbackSent: () => void
 }
 
-export function FeedbackContentStep( {onFeedbackSent, feedbackType, onFeedbackRestartRequested }: FeedbackContentStepProps) {
-  const [screenshot, setScreenshot] = useState<string | null>()
+export function FeedbackContentStep({
+    onFeedbackSent,
+    feedbackType,
+    onFeedbackRestartRequested
+  }: FeedbackContentStepProps) {
+  const [screenshot, setScreenshot] = useState <string | null> (null)
   const [comment, setComment] = useState('')
   const feedbackTypeInfo = feedbackTypes[feedbackType]
   const [isSendingFeedback, setIsSendingFeedback] = useState(false)
